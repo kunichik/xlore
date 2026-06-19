@@ -168,3 +168,7 @@ xlore/
 ## License
 
 [MIT](./LICENSE) — the protocol & tooling are free to fork and use. Your archive content is, of course, yours.
+
+## About
+
+Built by [Oleksandr Kunichik](https://github.com/kunichik) — also building [KAPT](https://www.kapt.ai/about) (multi-agent AI orchestration) and [Demina](https://demina.ai).
