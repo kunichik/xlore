@@ -1,0 +1,18 @@
+.DS_Store
+*.swp
+*.tmp
+.idea/
+.vscode/
+node_modules/
+
+# Obsidian: ignore volatile/machine-local state, keep shareable config if you commit it.
+.obsidian/workspace*
+.obsidian/cache
+.obsidian/plugins/*/data.json
+
+# collect-raw.sh staging area (review before you ever commit raw/)
+raw/**/*.partial
+
+# Your live sources list may name private repos — keep the example tracked, ignore the real one
+# if you'd rather not commit it. (Commented out by default; uncomment to keep it local-only.)
+# tools/sources.conf

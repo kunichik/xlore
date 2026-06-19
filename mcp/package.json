@@ -1,0 +1,22 @@
+{
+  "name": "xlore-mcp",
+  "version": "0.1.0",
+  "description": "Read-only MCP server over an xlore knowledge archive (local stdio).",
+  "type": "module",
+  "bin": { "xlore-mcp": "dist/index.js" },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}

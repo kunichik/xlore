@@ -1,0 +1,9 @@
+# Filename / path-fragment patterns collect-raw.sh skips.
+log.txt
+answer.txt
+node_modules/
+.next/
+build/
+dist/
+.venv/
+__pycache__/

@@ -1,0 +1,13 @@
+# Gemini instructions
+
+This repository is an **xlore** knowledge & session archive. The operating protocol is in
+[`CLAUDE.md`](./CLAUDE.md) — read it and follow it exactly. This file is only a pointer so the
+Gemini CLI picks up the same protocol; do not duplicate the protocol here.
+
+Non-negotiable:
+- It's a knowledge base; you maintain `wiki/` under `CLAUDE.md`'s protocol.
+- Never write to `wiki/` without a numbered triage and the user's explicit `go`.
+- Never push without `git pull --ff-only` first; never push to the remote named `upstream` (the public template).
+- Treat this repo as private — see [`PRIVACY.md`](./PRIVACY.md).
+
+Operations: `xlore_wrapup`, `xlore_import`, `xlore_query`, `xlore_where`, `xlore_lint`, `xlore_undo`.

@@ -1,0 +1,13 @@
+# sources.conf — repos that collect-raw.sh scans for context.
+# Copy to sources.conf and edit:   cp tools/sources.conf.example tools/sources.conf
+#
+# One path per line. Lines starting with # are ignored.
+# Paths can be absolute (/Users/you/code/app), ~-relative (~/code/app),
+# or $HOME-relative (Documents/projects/app).
+#
+# For each repo, collect-raw.sh pulls (redacted): CLAUDE.md, AGENTS.md, README.md,
+# docs/**/*.md, other root *.md, and the full git log.
+
+Documents/projects/my-app
+Documents/projects/my-other-repo
+# ~/work/some-service

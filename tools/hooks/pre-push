@@ -1,0 +1,30 @@
+#!/bin/bash
+# pre-push — PRIVACY GUARD.
+# Refuses any push whose destination remote is the public template ('upstream',
+# or any URL whose repo name is exactly 'xlore'/'xlore.git'). This stops your
+# private archive from ever being pushed to the public template by accident.
+#
+# Enable it:   git config core.hooksPath tools/hooks
+# (See PRIVACY.md.)
+
+remote_name="$1"
+remote_url="$2"
+
+block() {
+  echo "" >&2
+  echo "⛔ pre-push BLOCKED: refusing to push to '$remote_name' ($remote_url)." >&2
+  echo "   That destination looks like the PUBLIC xlore template." >&2
+  echo "   Your archive is private — push to your own 'origin', never to 'upstream'." >&2
+  echo "   See PRIVACY.md. (To override for a deliberate template change: git push --no-verify)" >&2
+  echo "" >&2
+  exit 1
+}
+
+# Block by remote name
+[ "$remote_name" = "upstream" ] && block
+
+# Block by URL shape: repo basename is exactly 'xlore' (the template)
+base="$(basename "${remote_url%.git}")"
+[ "$base" = "xlore" ] && block
+
+exit 0
