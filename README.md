@@ -20,18 +20,51 @@ Claude Code, Windsurf, Cursor (and any future agent) read and write the same wik
 - **`active.md` cross-chat board.** A one-screen live state of every in-flight track and who owns it — so any chat can resume any other chat's work without replaying its context. This is the part you'll miss the most once you have it.
 - **Just markdown + git.** No database, no service, no lock-in. Works offline. Diffs in PRs. Yours forever.
 
-## Quickstart
+## Set up your own xlore (full walkthrough)
 
-1. Click **"Use this template" → Create a new repository**, and **set it to Private**.
-2. Clone your new private repo wherever you like:
+Everything you need to stand up a fresh archive on a new machine. Steps 1–6 are required; 7–9 are optional.
+
+1. **Create your repo from this template — Private.** On this template's GitHub page: **"Use this template" → Create a new repository → set visibility to Private.** Never public — it will hold sensitive notes. (See [PRIVACY.md](./PRIVACY.md).)
+
+2. **Clone it** on the machine you'll work on:
    ```bash
    git clone git@github.com:<you>/<your-xlore>.git
    cd <your-xlore>
    ```
-3. Open the folder in your AI tool (Claude Code / Windsurf / Cursor). It reads [`CLAUDE.md`](./CLAUDE.md) (and [`AGENTS.md`](./AGENTS.md)) automatically.
-4. Say `xlore onboarding` (or just run any xlore command) — on first run the agent walks you through a short questionnaire and writes your setup to `config/profile.md`.
-5. Optionally pull raw context from your repos: `./tools/collect-raw.sh claude-code` (configure which repos in `tools/sources.conf`).
-6. Start working. After meaningful sessions, the agent offers: *"Worth running xlore_wrapup?"*
+
+3. **Turn on the privacy guard** — blocks ever pushing your data to the public template:
+   ```bash
+   git config core.hooksPath tools/hooks
+   ```
+
+4. **(Optional) wire up protocol updates** from this template:
+   ```bash
+   git remote add upstream <this-template's-git-url>   # fetch-only; later run ./tools/update.sh
+   ```
+
+5. **Open the folder in your AI tool** — Claude Code, Cursor, Windsurf, Copilot, Cline/Roo, or Gemini CLI. It auto-reads [`CLAUDE.md`](./CLAUDE.md) / [`AGENTS.md`](./AGENTS.md) and the matching pointer file.
+
+6. **Onboard:** say `xlore onboarding`. A short questionnaire writes [`config/profile.md`](./config/profile.example.md) — your handle, machine, which tools you use, the **repo-private gate**, sync mode, and which repos to track.
+
+7. **(Optional) seed context from your repos:**
+   ```bash
+   cp tools/sources.conf.example tools/sources.conf   # then edit it to list your repos
+   ./tools/collect-raw.sh claude-code                 # pulls redacted context into raw/
+   ```
+   And `xlore_scan` to index past IDE chat sessions you never wrapped up.
+
+8. **(Optional) read the archive from a chat assistant (MCP):**
+   ```bash
+   cd mcp && npm install && npm run build
+   ```
+   then point Claude Desktop / Cursor at `mcp/dist/index.js` — see [`mcp/README.md`](./mcp/README.md).
+
+9. **Work.** After meaningful sessions the agent offers *"Worth running xlore_wrapup?"* → it shows a numbered triage → you reply `go` → it writes. Then commit & push to **your** `origin`:
+   ```bash
+   git add -A && git commit -m "xlore: <topic>" && git pull --rebase --autostash && git push
+   ```
+
+> ⚠️ Before storing anything real, read [PRIVACY.md](./PRIVACY.md). Keep the repo **private**; the guard in step 3 stops accidental pushes to the public template.
 
 ## Operations
 
