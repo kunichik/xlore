@@ -2,7 +2,7 @@
 
 **A git-versioned knowledge base that your AI coding agents maintain for you — across tools, across chats, across machines.**
 
-Claude Code, Windsurf, Cursor (and any future agent) read and write the same wiki under one shared protocol. Every write is human-approved. Inspired by [Karpathy's LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f).
+Claude Code, Windsurf, Cursor (and any future agent) read and write the same wiki under one shared protocol. Every write is human-approved. Long in the making — [Karpathy's LLM-wiki note](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) was the nudge to finally ship it.
 
 > ## ⚠️ PRIVACY — READ THIS FIRST
 > **This template is public. Your archive must be PRIVATE.**
@@ -22,7 +22,7 @@ Claude Code, Windsurf, Cursor (and any future agent) read and write the same wik
 
 ## Set up your own xlore (full walkthrough)
 
-Everything you need to stand up a fresh archive on a new machine. Steps 1–6 are required; 7–9 are optional.
+Everything you need to stand up a fresh archive on a new machine. Steps 1–3, 5, and 6 are the core; step 4 and steps 7–9 are optional.
 
 1. **Create your repo from this template — Private.** On this template's GitHub page: **"Use this template" → Create a new repository → set visibility to Private.** Never public — it will hold sensitive notes. (See [PRIVACY.md](./PRIVACY.md).)
 
@@ -86,6 +86,8 @@ Full protocol: [`CLAUDE.md`](./CLAUDE.md).
 
 Any agent that can open this folder and read an instruction file works. The protocol lives **once** in
 `CLAUDE.md`; every file below is a thin pointer to it (single source of truth — never duplicate the protocol).
+
+**The agent only sees xlore when its folder is in the workspace.** Open it as a folder (VS Code, Cursor, Windsurf), add it to your solution/workspace (Visual Studio), or pass it as a working directory (CLI agents). A multi-root / multi-folder workspace lets you keep xlore open *alongside* your project repo so the same agent can read both.
 
 | Tool | Picks it up via | Notes |
 |---|---|---|
