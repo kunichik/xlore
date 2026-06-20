@@ -100,6 +100,33 @@ Any agent that can open this folder and read an instruction file works. The prot
 | Codex CLI · Zed · Continue · OpenHands · Aider · Amp · … | `AGENTS.md` | the cross-tool umbrella standard |
 | Claude / ChatGPT (web & mobile) | xlore **MCP connector** | *roadmap — chat assistants, not filesystem agents* |
 
+## Make every project aware of xlore
+
+By default an agent only knows the `xlore_*` commands when xlore's `CLAUDE.md` is in its context.
+Three ways to make a project aware — use whichever fits:
+
+1. **Open xlore in the same workspace** (ad-hoc). Add the xlore folder to your multi-root workspace
+   (VS Code / Cursor / Windsurf) or solution (Visual Studio), *alongside* the project. The agent reads
+   both folders → it knows `xlore_wrapup` etc. for as long as that workspace is open. **Yes — this is
+   all it takes for that session.**
+
+2. **Set it once, globally** (best for "everywhere, every repo"). Add a one-line pointer to your
+   *user-level* agent instructions, so every session knows without touching each repo:
+   - Claude Code → `~/.claude/CLAUDE.md`
+   - Cursor → Settings → Rules (User Rules)
+   - Codex CLI → your global `AGENTS.md`
+   ```
+   This machine uses xlore at ~/xlore. After significant work, offer "xlore_wrapup"
+   and follow ~/xlore/CLAUDE.md for the protocol.
+   ```
+
+3. **Per-repo pointer** (for tools without a global option, e.g. GitHub Copilot). Drop the same
+   one-liner into that repo's `.github/copilot-instructions.md` / `CLAUDE.md` / `AGENTS.md`.
+
+**Recommended:** do #2 once (works everywhere), and use #1 when you actually want the agent to
+read/write xlore in a given session. You only need per-repo pointers (#3) for tools that have no
+global-instruction mechanism.
+
 ## Use it with Obsidian
 
 xlore is **already an [Obsidian](https://obsidian.md) vault** — it's a folder of markdown with `[[wikilinks]]`, which is exactly Obsidian's native format. Just **open this folder as a vault** and you get, for free:
