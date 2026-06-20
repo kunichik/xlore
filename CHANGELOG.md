@@ -3,6 +3,10 @@
 The protocol version is declared at the top of [`CLAUDE.md`](./CLAUDE.md). `tools/update.sh` reads it
 to tell you when an upstream pull changes the protocol.
 
+## 1.4.0 — 2026-06-19
+- Onboarding gains a step: offer to set up a **global** xlore pointer (`~/.claude/CLAUDE.md`, Cursor User Rules, global `AGENTS.md`) so every project/repo's agent knows about xlore, not just when the folder is open.
+- README: new "Make every project aware of xlore" section (workspace / global / per-repo) + a workspace-setup note (open the folder / add to solution) in Supported tools.
+
 ## 1.3.0 — 2026-06-19
 - `xlore_scan` operation: index past sessions straight from local IDE chat stores (Claude Code jsonl, Cursor/Copilot/Windsurf VS Code workspaceStorage) — recovers work the user forgot to `wrapup`. Offered at first-run onboarding and as a fallback when `xlore_query`/`xlore_where` come up empty.
 - `mcp/` — a read-only local-stdio MCP server (`xlore_query` / `xlore_where` / `xlore_read` / `xlore_recent`) so chat assistants (Claude Desktop, etc.) can read the archive without write access. Hosted transport = roadmap.

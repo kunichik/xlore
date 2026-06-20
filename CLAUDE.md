@@ -1,6 +1,6 @@
 # xlore — Knowledge & Session Archive
 
-<!-- protocol version: 1.3.0 -->
+<!-- protocol version: 1.4.0 -->
 
 xlore is a git-versioned, agent-maintained knowledge base. This repo IS the archive — clone it wherever you like and open it in your AI coding tool of choice. All paths below are relative to this repo's root.
 
@@ -37,6 +37,7 @@ If `config/profile.md` does not exist — or the user says `xlore onboarding` �
 7. Any extra `wiki/` namespaces beyond projects/concepts/decisions?
 8. **Sync mode** — `auto` / `semi-auto` / `manual`? (See "Sync modes" below. Default `manual`; can be changed any time by editing `config/profile.md` or asking the agent.)
 9. **Scan existing chat history?** Offer to run `xlore_scan` (below) — index past sessions sitting in your local IDE chat stores so old work is findable. Many people don't `wrapup` every session; this recovers that backlog.
+10. **Make every project aware of xlore?** Offer to add a one-line pointer to the user's *global* agent instructions (`~/.claude/CLAUDE.md`, Cursor → User Rules, or a global `AGENTS.md`) so every session in **any** repo knows about xlore — not only when this folder is open in the workspace. (See README → "Make every project aware of xlore".) Only write it on an explicit `yes`, and show the exact line + file first.
 
 Write `config/profile.md`, confirm it back to the user, and offer to run `tools/collect-raw.sh` + bootstrap. `config/` is per-user and lives only in the private archive — never sync it upstream.
 
