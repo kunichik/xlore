@@ -1,10 +1,10 @@
 # xlore — Knowledge & Session Archive
 
-<!-- protocol version: 1.4.0 -->
+<!-- protocol version: 1.5.0 -->
 
 xlore is a git-versioned, agent-maintained knowledge base. This repo IS the archive — clone it wherever you like and open it in your AI coding tool of choice. All paths below are relative to this repo's root.
 
-You become a knowledge maintainer when invoked via `xlore_wrapup`, `xlore_import`, `xlore_query`, `xlore_where`, `xlore_scan`, `xlore_lint`, `xlore_undo`, or `xlore onboarding`.
+You become a knowledge maintainer when invoked via `xlore_wrapup`, `xlore_import`, `xlore_query`, `xlore_where`, `xlore_scan`, `xlore_status`, `xlore_lint`, `xlore_undo`, or `xlore onboarding`.
 
 ## ⚠️ Privacy & safety (non-negotiable)
 This archive holds private knowledge. Enforce these at all times — see `PRIVACY.md`:
@@ -91,7 +91,7 @@ Mode is read at session start from `config/profile.md`. The user can change it a
    - `abort` — cancel, no writes
 3. Write only approved items.
 4. Update `index.md` (add/move/rename entries as the tree changes).
-5. Append `log.md`: `## [YYYY-MM-DD HH:MM] <tool> | wrapup | <title> (chat: <id-or-name>)` + touched files. Always record the chat identifier so `xlore_where` can find it later — for Claude Code use the resume id; for other tools use the chat title.
+5. Append `log.md`: `## [YYYY-MM-DD HH:MM] <tool> · <author> | wrapup | <title> (chat: <id-or-name>)` + touched files. `<author>` = the handle from `config/profile.md` (so a team archive shows *who* did what without `git blame`). Always record the chat identifier so `xlore_where` can find it later — for Claude Code use the resume id; for other tools use the chat title.
 6. Suggest: `git add -A && git commit -m "xlore(<tool>): <topic>" && git pull --rebase --autostash && git push`.
 
 ## xlore_import <source>
@@ -125,7 +125,15 @@ Index past sessions that were never wrapped up, by reading the **local IDE chat 
 2. For the workspaces the user cares about, extract conversation text **grouped by workspace**, redact secrets (same rules as `raw/`), and write to `raw/<tool>/<date>/scan-<workspace>.md`.
 3. Run a normal **triage** over what was found (NEW/EXTEND pages, or just "indexed N sessions, here's what's now findable"). Wait for `go`.
 4. This is heavy and format-specific per tool — do it for the workspaces requested, not blindly for everything. In `auto`/`semi-auto` mode it can be part of periodic maintenance.
-5. Log: `## [date] <tool> | scan | <workspaces>`
+5. Log: `## [date] <tool> · <author> | scan | <workspaces>`
+
+## xlore_status
+A team/solo status snapshot — "what's in flight, who owns what, what's blocked" — grounded in the recorded artifacts (no surveys, no inference).
+1. Read `active.md` (the in-flight board) + the recent `log.md` entries.
+2. Summarize **grouped by owner / `author`**: each person's active tracks (State + Next action), surfacing **blockers (🔴)** and stale tracks first.
+3. This is **situational awareness, not productivity policing.** Report only what's recorded; attribute via the `author` stamp / git authorship; never infer or score performance. (See the team-mode note in README.)
+4. `tools/status.sh [N]` is the quick non-LLM glance (the board + the last N log headers).
+5. Log: `## [date] <tool> · <author> | status | <scope>`
 
 ## xlore_lint
 Find: contradictions between pages, stale claims, orphan pages, missing cross-refs, knowledge gaps.
@@ -165,6 +173,7 @@ Multiple tools and chats write here, so contradictions are expected. The rules t
   ---
   last_tool: claude-code | windsurf | cursor | <your-tool>
   last_machine: <hostname>
+  last_author: <your-handle>   # from config/profile.md — who, for team archives (vs git blame)
   updated: YYYY-MM-DD
   ---
   ```

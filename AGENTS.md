@@ -11,7 +11,7 @@ for `AGENTS.md` (Cursor and others) pick up the same protocol as tools that read
 - Treat this repo as **private**. See [`PRIVACY.md`](./PRIVACY.md). Never push the user's data to a
   remote named `upstream` (that is the public template).
 
-Operations: `xlore_wrapup`, `xlore_import`, `xlore_query`, `xlore_where`, `xlore_scan`, `xlore_lint`, `xlore_undo`, `xlore onboarding`.
+Operations: `xlore_wrapup`, `xlore_import`, `xlore_query`, `xlore_where`, `xlore_scan`, `xlore_status`, `xlore_lint`, `xlore_undo`, `xlore onboarding`.
 See [`CLAUDE.md`](./CLAUDE.md) for what each does.
 
 > **Single source of truth:** the protocol lives only in `CLAUDE.md`. This file, `.github/copilot-instructions.md`, `.cursorrules`, and `.windsurfrules` are all thin pointers to it — do not duplicate the protocol into them.

@@ -77,6 +77,7 @@ Trigger these in any AI tool with this folder open:
 | `xlore_query <question>` | Ask the archive, cited from sources |
 | `xlore_where <what>` | Locate which tool/chat you did something in (the cross-chat finder) |
 | `xlore_scan` | Index past sessions from your local IDE chat stores (recovers work you forgot to save) |
+| `xlore_status` | Team/solo snapshot: who's working on what and what's blocked (from `active.md` + log) |
 | `xlore_lint` | Health check: contradictions, orphans, stale claims, gaps |
 | `xlore_undo` | Revert the last write |
 

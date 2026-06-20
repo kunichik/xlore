@@ -3,6 +3,11 @@
 The protocol version is declared at the top of [`CLAUDE.md`](./CLAUDE.md). `tools/update.sh` reads it
 to tell you when an upstream pull changes the protocol.
 
+## 1.5.0 — 2026-06-20
+- Team mode groundwork: log stamps and page frontmatter now carry `author` / `last_author` (the handle from `config/profile.md`) so a shared archive shows **who** did what without `git blame`.
+- New `xlore_status` operation: a team/solo snapshot — who's working on what, what's blocked — from `active.md` + recent log, grouped by owner/author. Framed as situational awareness, **not** productivity policing.
+- `tools/status.sh [N]` — quick non-LLM glance (board + last N log headers).
+
 ## 1.4.0 — 2026-06-19
 - Onboarding gains a step: offer to set up a **global** xlore pointer (`~/.claude/CLAUDE.md`, Cursor User Rules, global `AGENTS.md`) so every project/repo's agent knows about xlore, not just when the folder is open.
 - README: new "Make every project aware of xlore" section (workspace / global / per-repo) + a workspace-setup note (open the folder / add to solution) in Supported tools.
